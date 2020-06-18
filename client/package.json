@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.10.2",
@@ -22,11 +22,7 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [ ">0.2%", "not dead", "not op_mini all" ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
