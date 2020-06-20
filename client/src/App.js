@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
 
-import Navbar from './components/navbar/navbar.component';
+import { Navbar } from './components/Navbar';
+import { UserContextManager } from './contexts/UserContext';
 
 function App() {
   return (
-    <div className='App'>
-      <Navbar />
-    </div>
+    <UserContextManager>
+      <div className='App'>
+        <Navbar />
+      </div>
+    </UserContextManager>
   );
 }
 
