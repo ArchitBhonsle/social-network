@@ -17,8 +17,16 @@ class home extends Component {
 
   componentDidMount() {
     var idOfOwner = "";
+    var token = window.localStorage.getItem("Authentication");
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    const bodyParameters = {
+      key: "value",
+    };
     axios
-      .get("http://localhost:5000/task")
+      .get("http://localhost:5000/tasks", config, bodyParameters)
       .then((res) => {
         console.log(res.data);
         this.setState({

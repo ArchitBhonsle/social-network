@@ -33,7 +33,7 @@ class login extends Component {
       .post("http://localhost:5000/users/login", userData)
       .then((res) => {
         //console.log(res.data);
-        localStorage.setItem("auth_token", res.data.token);
+        localStorage.setItem("Authentication", res.data.token);
         this.setState({
           loading: false,
         });

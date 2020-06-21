@@ -14,7 +14,7 @@ router.post("/users", async (req, res) => {
     await user.save();
     sendWelcomeEmail(user.email, user.name);
     const token = await user.generateAuthToken();
-    res.cookie("auth_token", token);
+    //res.cookie("auth_token", token);
     //res.sendFile(path.resolve(__dirname, '../..', 'public', 'private.html'))
     res.status(201).json({ error: "Invalid" }).send({ user, token });
   } catch (e) {
@@ -29,7 +29,7 @@ router.post("/users/login", async (req, res) => {
       req.body.password
     ); // "U"ser -> to access collection
     const token = await user.generateAuthToken(); //user->to acces individual user
-    res.cookie("auth_token", token);
+    //res.cookie("auth_token", token);
     //res.sendFile(path.resolve(__dirname, '../..', 'public', 'private.html'))
     res.send({ user, token });
   } catch (e) {
