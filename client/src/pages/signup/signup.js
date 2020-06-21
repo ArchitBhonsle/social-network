@@ -15,6 +15,7 @@ class signup extends Component {
     name: "",
     email: "",
     password: "",
+    errors: {},
     loading: true,
   };
 
@@ -33,7 +34,8 @@ class signup extends Component {
     axios
       .post("http://localhost:5000/users", userData)
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
+        localStorage.setItem("auth_token", res.data.token);
         this.setState({
           loading: false,
         });
@@ -42,9 +44,10 @@ class signup extends Component {
       })
       .catch((err) => {
         this.setState({
-          // errors: err.response.statusCode,
+          errors: err.response.data,
           loading: false,
         });
+        //console.log(err.response.data);
       });
   };
 
@@ -55,6 +58,8 @@ class signup extends Component {
   };
 
   render() {
+    const { errors } = this.state;
+
     return (
       <Grid container className={styles.form}>
         <Grid item sm />
@@ -71,8 +76,8 @@ class signup extends Component {
               label="Username"
               variant="outlined"
               className={styles.textField}
-              // helperText={errors}
-              // error={errors ? true : false}
+              helperText={errors._message}
+              error={errors._message ? true : false}
               value={this.state.name}
               onChange={this.handleChange}
               fullWidth
@@ -84,8 +89,8 @@ class signup extends Component {
               label="Email"
               variant="outlined"
               className={styles.textField}
-              // helperText={errors}
-              // error={errors ? true : false}
+              helperText={errors._message}
+              error={errors._message ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
@@ -97,8 +102,8 @@ class signup extends Component {
               label="Password"
               variant="outlined"
               className={styles.textField}
-              // helperText={errors}
-              // error={errors ? true : false}
+              helperText={errors._message}
+              error={errors._message ? true : false}
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth

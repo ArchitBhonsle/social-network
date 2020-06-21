@@ -15,7 +15,7 @@ class login extends Component {
     email: "",
     password: "",
     loading: false,
-    //errors: "",
+    errors: {},
   };
 
   handleSubmit = (event) => {
@@ -32,7 +32,8 @@ class login extends Component {
     axios
       .post("http://localhost:5000/users/login", userData)
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
+        localStorage.setItem("auth_token", res.data.token);
         this.setState({
           loading: false,
         });
@@ -42,9 +43,10 @@ class login extends Component {
       })
       .catch((err) => {
         this.setState({
-          // errors: err.response.statusCode,
+          errors: err.response.data,
           loading: false,
         });
+        //console.log(err.response.data);
       });
   };
 
@@ -73,8 +75,8 @@ class login extends Component {
               label="Email"
               variant="outlined"
               className={styles.textField}
-              // helperText={errors}
-              // error={errors ? true : false}
+              helperText={errors.error}
+              error={errors.error ? true : false}
               value={this.state.email}
               onChange={this.handleChange}
               fullWidth
@@ -86,8 +88,8 @@ class login extends Component {
               label="Password"
               variant="outlined"
               className={styles.textField}
-              // helperText={errors}
-              // error={errors ? true : false}
+              helperText={errors.error}
+              error={errors.error ? true : false}
               value={this.state.password}
               onChange={this.handleChange}
               fullWidth

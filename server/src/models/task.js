@@ -1,25 +1,36 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-const taskSchema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema(
+  {
     description: {
-        type: String,
-        required: true,
-        trim: true
+      type: String,
+      required: true,
+      trim: true,
     },
     completed: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
     owner: {
-        type: mongoose.Schema.Types.ObjectId,//id of user
-        required: true,
-        ref:'User'
-    }
-},{
-    timestamps:true
-})
+      type: mongoose.Schema.Types.ObjectId, //id of user
+      required: true,
+      ref: "User",
+    },
+    piclink: {
+      type: String,
+      ref: "User",
+    },
+    username: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-const Tasks = mongoose.model('Tasks', taskSchema)
+const Tasks = mongoose.model("Tasks", taskSchema);
 
-
-module.exports = Tasks
+module.exports = Tasks;

@@ -16,7 +16,7 @@ router.post("/users", async (req, res) => {
     const token = await user.generateAuthToken();
     res.cookie("auth_token", token);
     //res.sendFile(path.resolve(__dirname, '../..', 'public', 'private.html'))
-    res.status(201).send({ user, token });
+    res.status(201).json({ error: "Invalid" }).send({ user, token });
   } catch (e) {
     res.status(400).send(e);
   }
@@ -33,7 +33,7 @@ router.post("/users/login", async (req, res) => {
     //res.sendFile(path.resolve(__dirname, '../..', 'public', 'private.html'))
     res.send({ user, token });
   } catch (e) {
-    res.status(400).send();
+    res.status(400).json({ error: "Invalid" }).send();
   }
 });
 
