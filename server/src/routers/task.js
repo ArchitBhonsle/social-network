@@ -55,6 +55,7 @@ router.get("/tasks", auth, async (req, res) => {
 router.get("/task", async (req, res) => {
   try {
     const tasks = await Task.find({});
+
     res.send(tasks);
   } catch (e) {
     res.status(500).send();

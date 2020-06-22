@@ -35,7 +35,6 @@ class signup extends Component {
       .post("http://localhost:5000/users", userData)
       .then((res) => {
         //console.log(res.data);
-        localStorage.setItem("auth_token", res.data.token);
         this.setState({
           loading: false,
         });
@@ -114,7 +113,7 @@ class signup extends Component {
               color="primary"
               className={styles.button}
             >
-              Login
+              Signup
             </Button>
           </form>
         </Grid>
