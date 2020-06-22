@@ -5,18 +5,19 @@ import axios from "axios";
 import { Grid } from "@material-ui/core";
 
 //styles
-import styles from "./home.module.css";
+//import styles from "./home.module.css";
 
 //compoents
 import Post from "../../components/Post/Post";
+import Profile from "../../components/Profile/Profile";
 
 class home extends Component {
   state = {
     posts: null,
+    userProfile: {},
   };
 
   componentDidMount() {
-    var idOfOwner = "";
     var token = window.localStorage.getItem("Authentication");
     const config = {
       headers: { Authorization: `Bearer ${token}` },
@@ -25,12 +26,36 @@ class home extends Component {
     const bodyParameters = {
       key: "value",
     };
+    // axios
+    //   .get("http://localhost:5000/tasks", config, bodyParameters)
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     this.setState({
+    //       posts: res.data,
+    //     });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+
     axios
-      .get("http://localhost:5000/tasks", config, bodyParameters)
+      .get("http://localhost:5000/task")
       .then((res) => {
-        console.log(res.data);
+        //console.log(res.data);
         this.setState({
           posts: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .get("http://localhost:5000/users/me", config, bodyParameters)
+      .then((res) => {
+        //console.log(res.data);
+        this.setState({
+          userProfile: res.data,
         });
       })
       .catch((err) => {
@@ -49,7 +74,7 @@ class home extends Component {
           {recentPosts}
         </Grid>
         <Grid item sm={4} xs={12}>
-          <p>profile</p>
+          <Profile userProfile={this.state.userProfile} />
         </Grid>
       </Grid>
     );

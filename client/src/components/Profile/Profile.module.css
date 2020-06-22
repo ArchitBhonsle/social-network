@@ -1,0 +1,17 @@
+.profileImage img {
+  max-width: 100%;
+}
+
+.paper hr {
+  margin-top: 10px;
+  max-width: 80%;
+  margin-bottom: 10px;
+}
+
+.profileDetails {
+  text-align: center;
+}
+
+.profileDetails a:hover {
+  text-decoration: none;
+}
