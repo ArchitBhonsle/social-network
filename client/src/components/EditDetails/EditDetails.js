@@ -19,8 +19,33 @@ class EditDetails extends Component {
     bio: "",
     website: "",
     location: "",
+    //piclink: "",
     open: false,
   };
+
+  componentDidMount() {
+    var token = window.localStorage.getItem("Authentication");
+    console.log(token);
+    const config = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
+
+    const bodyParameters = {
+      key: "value",
+    };
+
+    axios
+      .get("http://localhost:5000/users/me", config, bodyParameters)
+      .then((res) => {
+        this.setState({
+          bio: res.data.bio,
+          website: res.data.website,
+          location: res.data.location,
+          //piclink: res.data.piclink,
+        });
+      })
+      .catch((err) => console.log(err));
+  }
 
   handleClickOpen = () => {
     this.setState({

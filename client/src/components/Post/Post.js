@@ -9,14 +9,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 import styles from "./Post.module.css";
 
 //material ui
-import {
-  Card,
-  CardActionArea,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-} from "@material-ui/core";
+import { Card, CardContent, CardMedia, Typography } from "@material-ui/core";
 
 class Post extends Component {
   render() {
