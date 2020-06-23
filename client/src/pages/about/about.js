@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+//styles
+import styles from "./about.module.css";
+
 //material ui
 import {
   Grid,
@@ -19,7 +22,7 @@ class about extends Component {
     return (
       <Grid container spacing={4}>
         <Grid item sm={4} xs={12}>
-          <Card>
+          <Card className={styles.card}>
             <CardActionArea>
               <CardMedia
                 style={{ height: 0, paddingTop: "56%" }}
@@ -49,7 +52,7 @@ class about extends Component {
           </Card>
         </Grid>
         <Grid item sm={4} xs={12}>
-          <Card>
+          <Card className={styles.card}>
             <CardActionArea>
               <CardMedia
                 style={{ height: 0, paddingTop: "56%" }}
@@ -79,7 +82,7 @@ class about extends Component {
           </Card>
         </Grid>
         <Grid item sm={4} xs={12}>
-          <Card>
+          <Card className={styles.card}>
             <CardActionArea>
               <CardMedia
                 style={{ height: 0, paddingTop: "56%" }}
