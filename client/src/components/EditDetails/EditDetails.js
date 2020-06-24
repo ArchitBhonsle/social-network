@@ -25,7 +25,7 @@ class EditDetails extends Component {
 
   componentDidMount() {
     var token = window.localStorage.getItem("Authentication");
-    console.log(token);
+    //console.log(token);
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
